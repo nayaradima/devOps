@@ -1,16 +1,16 @@
-# name: Hello Github Actions
-# on: [push]
-# jobs:
-#   examples:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Test
-#         run: |
-#           echo "Hello World"
+name: Hello Github Actions
+on: [push]
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo "Hello World"
 
-#       - name: Test 2
-#         run: |
-#           echo "GoodBye World"
+      - name: Test 2
+        run: |
+          echo "GoodBye World"
 
       # - name: Install dependencies
       #   run: |
