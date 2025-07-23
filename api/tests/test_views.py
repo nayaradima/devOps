@@ -15,6 +15,7 @@ class BookViewTest(APITestCase):
         response = self.client.get(url, format='json')
         assert response.status_code == status.HTTP_200_OK
         body = response.json()
+        #o test esta quebrando bem aqui!
         assert body == [
             {
                 "title":Book.title,
