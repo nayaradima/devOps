@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from django.urls import reverse
 from api.models import Book
+from api.serializers import BookSerializer
 
 class BookViewTest(APITestCase):
     
@@ -14,13 +15,10 @@ class BookViewTest(APITestCase):
         url = reverse('api:books')
         response = self.client.get(url, format='json')
         assert response.status_code == status.HTTP_200_OK
-        body = response.json()
-        #o test esta quebrando bem aqui!
-        assert body == [
-            {
-                "title":Book.title,
-                "description":Book.description,
-                "author":Book.author,
-                "created_at":Book.created_at
-            }
-        ]
+        
+        #serialize the book instance
+        expected_data = BookSerializer([Book], many=True).data
+        
+        #compare against actual response
+        assert response.json() == expected_data
+        
