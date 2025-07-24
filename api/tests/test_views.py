@@ -19,7 +19,7 @@ class BookViewTest(APITestCase):
         assert response.status_code == status.HTTP_200_OK
         
         #serialize the book instance
-        expected_data = BookSerializer([books], many=True).data
+        expected_data = BookSerializer(books, many=True).data
         
         #compare against actual response
         assert response.json() == expected_data
